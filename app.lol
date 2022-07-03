@@ -29,13 +29,13 @@ HAI 1.2
     currentPlayer R FIELD_TYPES'Z CROSS
 
     HOW IZ I drowBoard YR board AN YR heading
-        VISIBLE heading
-        VISIBLE "    1 | 2 | 3 "
-        VISIBLE SMOOSH "1   " board'Z row0cell0 " | " board'Z row0cell1 " | " board'Z row0cell2 " " MKAY
-        VISIBLE "   ---|---|---"
-        VISIBLE SMOOSH "2   " board'Z row1cell0 " | " board'Z row1cell1 " | " board'Z row1cell2 " " MKAY
-        VISIBLE "   ---|---|---"
-        VISIBLE SMOOSH "3   " board'Z row2cell0 " | " board'Z row2cell1 " | " board'Z row2cell2 " " MKAY
+        I HAS A headingRow ITZ "..| 1 | 2 | 3 | :)"
+        I HAS A firstRow ITZ SMOOSH "1 | " board'Z row0cell0 " | " board'Z row0cell1 " | " board'Z row0cell2 " | :)" MKAY
+        I HAS A midleRow ITZ SMOOSH "2 | " board'Z row1cell0 " | " board'Z row1cell1 " | " board'Z row1cell2 " | :)" MKAY
+        I HAS A lastRow ITZ SMOOSH "3 | " board'Z row2cell0 " | " board'Z row2cell1 " | " board'Z row2cell2 " | :)" MKAY
+        I HAS A dividerRow ITZ "--|---|---|---| :)"
+        VISIBLE SMOOSH headingRow dividerRow firstRow dividerRow midleRow dividerRow lastRow dividerRow MKAY
+        VISIBLE SMOOSH heading " :)" MKAY
     IF U SAY SO
 
     HOW IZ I getCorrectlyFieldValue YR field AN YR currentPlayer
@@ -86,7 +86,7 @@ HAI 1.2
         fieldData HAS A isCorrectlyAction ITZ A TROOF
         fieldData'Z isCorrectlyAction R FAIL
 
-        I HAS A heading ITZ SMOOSH MESSAGES'Z SELECT_FIELD " " MESSAGES'Z PROTIP MKAY
+        I HAS A heading ITZ SMOOSH MESSAGES'Z SELECT_FIELD " " MESSAGES'Z PROTIP " :) :)" MKAY
 
         VISIBLE SMOOSH MESSAGES'Z CURRENT_PLAYER " " currentPlayer MKAY
         I IZ drowBoard YR board AN YR heading MKAY
