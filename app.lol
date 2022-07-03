@@ -2,6 +2,8 @@ HAI 1.2
     CAN HAS STDIO?
 
     I HAS A MESSAGES ITZ A BUKKIT
+    MESSAGES HAS A CURRENT_PLAYER ITZ "Current player:"
+    MESSAGES HAS A PROTIP ITZ "(type [row id].[cell id] like 1.1 or 3.2)"
     MESSAGES HAS A SELECT_FIELD ITZ "Please select a field"
     MESSAGES HAS A FIELD_NOT_EXIST ITZ "Please select a correctly field"
     MESSAGES HAS A FIELD_IS_TAKEN ITZ "This field is taken"
@@ -13,27 +15,27 @@ HAI 1.2
     FIELD_TYPES HAS A EMPTY ITZ " "
 
     I HAS A board ITZ A BUKKIT
-    board HAS A r0c0 ITZ FIELD_TYPES'Z EMPTY
-    board HAS A r0c1 ITZ FIELD_TYPES'Z EMPTY
-    board HAS A r0c2 ITZ FIELD_TYPES'Z EMPTY
-    board HAS A r1c0 ITZ FIELD_TYPES'Z EMPTY
-    board HAS A r1c1 ITZ FIELD_TYPES'Z EMPTY
-    board HAS A r1c2 ITZ FIELD_TYPES'Z EMPTY
-    board HAS A r2c0 ITZ FIELD_TYPES'Z EMPTY
-    board HAS A r2c1 ITZ FIELD_TYPES'Z EMPTY
-    board HAS A r2c2 ITZ FIELD_TYPES'Z EMPTY
+    board HAS A row0cell0 ITZ FIELD_TYPES'Z EMPTY
+    board HAS A row0cell1 ITZ FIELD_TYPES'Z EMPTY
+    board HAS A row0cell2 ITZ FIELD_TYPES'Z EMPTY
+    board HAS A row1cell0 ITZ FIELD_TYPES'Z EMPTY
+    board HAS A row1cell1 ITZ FIELD_TYPES'Z EMPTY
+    board HAS A row1cell2 ITZ FIELD_TYPES'Z EMPTY
+    board HAS A row2cell0 ITZ FIELD_TYPES'Z EMPTY
+    board HAS A row2cell1 ITZ FIELD_TYPES'Z EMPTY
+    board HAS A row2cell2 ITZ FIELD_TYPES'Z EMPTY
 
     I HAS A currentPlayer ITZ A YARN
     currentPlayer R FIELD_TYPES'Z CROSS
 
     HOW IZ I drowBoard YR board AN YR heading
-        VISIBLE "\033[2J"
         VISIBLE heading
-        VISIBLE SMOOSH " " board'Z r0c0 " | " board'Z r0c1 " | " board'Z r0c2 " " MKAY
-        VISIBLE "---|---|---"
-        VISIBLE SMOOSH " " board'Z r1c0 " | " board'Z r1c1 " | " board'Z r1c2 " " MKAY
-        VISIBLE "---|---|---"
-        VISIBLE SMOOSH " " board'Z r2c0 " | " board'Z r2c1 " | " board'Z r2c2 " " MKAY
+        VISIBLE "    1 | 2 | 3 "
+        VISIBLE SMOOSH "1   " board'Z row0cell0 " | " board'Z row0cell1 " | " board'Z row0cell2 " " MKAY
+        VISIBLE "   ---|---|---"
+        VISIBLE SMOOSH "2   " board'Z row1cell0 " | " board'Z row1cell1 " | " board'Z row1cell2 " " MKAY
+        VISIBLE "   ---|---|---"
+        VISIBLE SMOOSH "3   " board'Z row2cell0 " | " board'Z row2cell1 " | " board'Z row2cell2 " " MKAY
     IF U SAY SO
 
     HOW IZ I getCorrectlyFieldValue YR field AN YR currentPlayer
@@ -55,23 +57,23 @@ HAI 1.2
     IF U SAY SO
 
     HOW IZ I isWin YR board AN YR currentPlayer
-        ALL OF BOTH SAEM board'Z r0c0 AN currentPlayer AN BOTH SAEM board'Z r0c1 AN currentPlayer AN BOTH SAEM board'Z r0c2 AN currentPlayer MKAY
+        ALL OF BOTH SAEM board'Z row0cell0 AN currentPlayer AN BOTH SAEM board'Z row0cell1 AN currentPlayer AN BOTH SAEM board'Z row0cell2 AN currentPlayer MKAY
         O RLY?
             YA RLY
                 FOUND YR WIN
-            MEBBE ALL OF BOTH SAEM board'Z r1c0 AN currentPlayer AN BOTH SAEM board'Z r1c1 AN currentPlayer AN BOTH SAEM board'Z r1c2 AN currentPlayer MKAY
+            MEBBE ALL OF BOTH SAEM board'Z row1cell0 AN currentPlayer AN BOTH SAEM board'Z row1cell1 AN currentPlayer AN BOTH SAEM board'Z row1cell2 AN currentPlayer MKAY
                 FOUND YR WIN
-            MEBBE ALL OF BOTH SAEM board'Z r2c0 AN currentPlayer AN BOTH SAEM board'Z r2c1 AN currentPlayer AN BOTH SAEM board'Z r2c2 AN currentPlayer MKAY
+            MEBBE ALL OF BOTH SAEM board'Z row2cell0 AN currentPlayer AN BOTH SAEM board'Z row2cell1 AN currentPlayer AN BOTH SAEM board'Z row2cell2 AN currentPlayer MKAY
                 FOUND YR WIN
-            MEBBE ALL OF BOTH SAEM board'Z r0c0 AN currentPlayer AN BOTH SAEM board'Z r1c0 AN currentPlayer AN BOTH SAEM board'Z r2c0 AN currentPlayer MKAY
+            MEBBE ALL OF BOTH SAEM board'Z row0cell0 AN currentPlayer AN BOTH SAEM board'Z row1cell0 AN currentPlayer AN BOTH SAEM board'Z row2cell0 AN currentPlayer MKAY
                 FOUND YR WIN
-            MEBBE ALL OF BOTH SAEM board'Z r0c1 AN currentPlayer AN BOTH SAEM board'Z r1c1 AN currentPlayer AN BOTH SAEM board'Z r2c1 AN currentPlayer MKAY
+            MEBBE ALL OF BOTH SAEM board'Z row0cell1 AN currentPlayer AN BOTH SAEM board'Z row1cell1 AN currentPlayer AN BOTH SAEM board'Z row2cell1 AN currentPlayer MKAY
                 FOUND YR WIN
-            MEBBE  ALL OF BOTH SAEM board'Z r0c2 AN currentPlayer AN BOTH SAEM board'Z r1c2 AN currentPlayer AN BOTH SAEM board'Z r2c2 AN currentPlayer MKAY
+            MEBBE  ALL OF BOTH SAEM board'Z row0cell2 AN currentPlayer AN BOTH SAEM board'Z row1cell2 AN currentPlayer AN BOTH SAEM board'Z row2cell2 AN currentPlayer MKAY
                 FOUND YR WIN
-            MEBBE  ALL OF BOTH SAEM board'Z r0c0 AN currentPlayer AN BOTH SAEM board'Z r1c1 AN currentPlayer AN BOTH SAEM board'Z r2c2 AN currentPlayer MKAY
+            MEBBE  ALL OF BOTH SAEM board'Z row0cell0 AN currentPlayer AN BOTH SAEM board'Z row1cell1 AN currentPlayer AN BOTH SAEM board'Z row2cell2 AN currentPlayer MKAY
                 FOUND YR WIN
-            MEBBE  ALL OF BOTH SAEM board'Z r0c2 AN currentPlayer AN BOTH SAEM board'Z r1c1 AN currentPlayer AN BOTH SAEM board'Z r2c0 AN currentPlayer MKAY
+            MEBBE  ALL OF BOTH SAEM board'Z row0cell2 AN currentPlayer AN BOTH SAEM board'Z row1cell1 AN currentPlayer AN BOTH SAEM board'Z row2cell0 AN currentPlayer MKAY
                 FOUND YR WIN
             NO WAI
                 FOUND YR FAIL
@@ -83,49 +85,54 @@ HAI 1.2
         I HAS A fieldData ITZ A BUKKIT
         fieldData HAS A isCorrectlyAction ITZ A TROOF
         fieldData'Z isCorrectlyAction R FAIL
-        I IZ drowBoard YR board AN YR MESSAGES'Z SELECT_FIELD MKAY
+
+        I HAS A heading ITZ SMOOSH MESSAGES'Z SELECT_FIELD " " MESSAGES'Z PROTIP MKAY
+
+        VISIBLE SMOOSH MESSAGES'Z CURRENT_PLAYER " " currentPlayer MKAY
+        I IZ drowBoard YR board AN YR heading MKAY
+
         GIMMEH selectedField
         selectedField IS NOW A YARN
 
         selectedField, WTF?
-            OMG "0.0"
-                fieldData R I IZ getCorrectlyFieldValue YR board'Z r0c0 AN YR currentPlayer MKAY
-                board'Z r0c0 R fieldData'Z value
-                GTFO
-            OMG "0.1"
-                fieldData R I IZ getCorrectlyFieldValue YR board'Z r0c1 AN YR currentPlayer MKAY
-                board'Z r0c1 R fieldData'Z value
-                GTFO
-            OMG "0.2"
-                fieldData R I IZ getCorrectlyFieldValue YR board'Z r0c2 AN YR currentPlayer MKAY
-                board'Z r0c2 R fieldData'Z value
-                GTFO
-            OMG "1.0"
-                fieldData R I IZ getCorrectlyFieldValue YR board'Z r1c0 AN YR currentPlayer MKAY
-                board'Z r1c0 R fieldData'Z value
-                GTFO
             OMG "1.1"
-                fieldData R I IZ getCorrectlyFieldValue YR board'Z r1c1 AN YR currentPlayer MKAY
-                board'Z r1c1 R fieldData'Z value
+                fieldData R I IZ getCorrectlyFieldValue YR board'Z row0cell0 AN YR currentPlayer MKAY
+                board'Z row0cell0 R fieldData'Z value
                 GTFO
             OMG "1.2"
-                fieldData R I IZ getCorrectlyFieldValue YR board'Z r1c2 AN YR currentPlayer MKAY
-                board'Z r1c2 R fieldData'Z value
+                fieldData R I IZ getCorrectlyFieldValue YR board'Z row0cell1 AN YR currentPlayer MKAY
+                board'Z row0cell1 R fieldData'Z value
                 GTFO
-            OMG "2.0"
-                fieldData R I IZ getCorrectlyFieldValue YR board'Z r2c0 AN YR currentPlayer MKAY
-                board'Z r2c0 R fieldData'Z value
+            OMG "1.3"
+                fieldData R I IZ getCorrectlyFieldValue YR board'Z row0cell2 AN YR currentPlayer MKAY
+                board'Z row0cell2 R fieldData'Z value
                 GTFO
             OMG "2.1"
-                fieldData R I IZ getCorrectlyFieldValue YR board'Z r2c1 AN YR currentPlayer MKAY
-                board'Z r2c1 R fieldData'Z value
+                fieldData R I IZ getCorrectlyFieldValue YR board'Z row1cell0 AN YR currentPlayer MKAY
+                board'Z row1cell0 R fieldData'Z value
                 GTFO
             OMG "2.2"
-                fieldData R I IZ getCorrectlyFieldValue YR board'Z r2c2 AN YR currentPlayer MKAY
-                board'Z r2c2 R fieldData'Z value
+                fieldData R I IZ getCorrectlyFieldValue YR board'Z row1cell1 AN YR currentPlayer MKAY
+                board'Z row1cell1 R fieldData'Z value
+                GTFO
+            OMG "2.3"
+                fieldData R I IZ getCorrectlyFieldValue YR board'Z row1cell2 AN YR currentPlayer MKAY
+                board'Z row1cell2 R fieldData'Z value
+                GTFO
+            OMG "3.1"
+                fieldData R I IZ getCorrectlyFieldValue YR board'Z row2cell0 AN YR currentPlayer MKAY
+                board'Z row2cell0 R fieldData'Z value
+                GTFO
+            OMG "3.2"
+                fieldData R I IZ getCorrectlyFieldValue YR board'Z row2cell1 AN YR currentPlayer MKAY
+                board'Z row2cell1 R fieldData'Z value
+                GTFO
+            OMG "3.3"
+                fieldData R I IZ getCorrectlyFieldValue YR board'Z row2cell2 AN YR currentPlayer MKAY
+                board'Z row2cell2 R fieldData'Z value
                 GTFO
             OMGWTF
-                VISIBLE MESSAGES'Z FIELD_NOT_EXIST
+                VISIBLE SMOOSH MESSAGES'Z FIELD_NOT_EXIST " " MESSAGES'Z PROTIP MKAY
         OIC
 
         fieldData'Z isCorrectlyAction
